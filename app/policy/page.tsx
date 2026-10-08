@@ -17,7 +17,13 @@ export default function PolicyPage() {
             href="/"
             className="font-bold text-lg tracking-tight text-slate-900 hover:text-slate-700 select-none flex items-center gap-2"
           >
-            imzr
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/favicon.png"
+              alt="imzr logo"
+              className="w-5 h-5 object-contain rounded-xs"
+            />
+            <span>imzr</span>
           </Link>
           <Link
             href="/"

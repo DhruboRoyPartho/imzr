@@ -216,4 +216,8 @@ test("Privacy & Architecture verification", async () => {
   assert.ok(fs.existsSync("./app/policy/page.tsx"), "Policy page must exist");
   assert.ok(fs.existsSync("./app/sitemap.ts"), "sitemap.ts must exist");
   assert.ok(fs.existsSync("./app/robots.ts"), "robots.ts must exist");
+
+  // Verify favicon icon exists
+  assert.ok(fs.existsSync("./public/favicon.png"), "public/favicon.png must exist");
+  assert.ok(fs.existsSync("./app/icon.png"), "app/icon.png must exist");
 });

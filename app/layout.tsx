@@ -48,6 +48,11 @@ export const metadata: Metadata = {
       "Resize, crop, rotate, convert, and compress images directly in your browser without uploading.",
     creator: "@dhruboroypartho",
   },
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: ["/favicon.png"],
+  },
 };
 
 export const viewport: Viewport = {

@@ -43,9 +43,15 @@ export default function Header({
         <div className="flex items-center gap-3">
           <Link
             href="/"
-            className="font-bold text-lg tracking-tight text-slate-900 select-none hover:text-slate-700"
+            className="flex items-center gap-2 font-bold text-lg tracking-tight text-slate-900 select-none hover:text-slate-700"
           >
-            imzr
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/favicon.png"
+              alt="imzr logo"
+              className="w-5 h-5 object-contain rounded-xs"
+            />
+            <span>imzr</span>
           </Link>
           <span className="text-xs text-slate-400 font-normal hidden sm:inline">
             Quick image editor
