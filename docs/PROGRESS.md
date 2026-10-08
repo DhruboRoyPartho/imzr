@@ -1,39 +1,59 @@
 # imzr Development Progress
 
 ## Current Phase
-Phase 0 — Project inspection
+Phase 1 — Application foundation
 
 ## Status
 COMPLETE
 
 ## Completed
-- Inspected repository structure and `/docs` specifications (01 through 09).
-- Confirmed repository state: clean directory containing only `/docs`.
-- Verified system environment: Node v24.20.0, npm 11.19.0 (via `npm.cmd`).
-- Initialized local git repository for checkpoint management.
-- Confirmed Next.js is not yet initialized.
+- Next.js 15 + React 19 + TypeScript + Tailwind CSS initialized.
+- Global styling and neutral layout established.
+- imzr branding and header with "Open another" functionality.
+- ImageDropzone with file picker, drag-and-drop, and privacy statement: "Your image stays in your browser. It is not uploaded."
+- Client-side image validation (MIME types, dimension limits, large-image pixel bounds).
+- In-browser image decoding via HTMLImageElement and ObjectURL lifecycle management.
+- Initial image preview and metadata display (dimensions, file size).
+- Clean object URL revocation to prevent memory leaks.
 
 ## Current Work
-- Completed Phase 0 inspection. Preparing to start Phase 1.
+- Phase 1 completed and verified with clean build and lint. Moving to Phase 2 — Image engine.
 
 ## Next Step
-Phase 1 — Application foundation (Initialize Next.js with TypeScript and Tailwind CSS, configure global styles, imzr branding, empty state dropzone, file picker, drag & drop, client-side decoding & preview layout).
+Phase 2 — Image engine (Implement browser-only image processing core in `lib/image/`: `transform.ts`, `render.ts`, `export.ts`, `compression.ts`).
 
 ## Known Issues
 - None.
 
 ## Validation
-- npm run lint: PENDING (Phase 1)
-- npm run build: PENDING (Phase 1)
-- relevant manual tests: System inspection passed.
+- npm run lint: PASS (0 errors, 0 warnings)
+- npm run build: PASS (static generation successful)
+- relevant manual tests: File decoding and layout components structured and verified.
 
 ## Important Decisions
-- Use `npm.cmd` / `npx.cmd` on Windows due to PowerShell script execution policy.
-- Use Next.js App Router with TypeScript and Tailwind CSS for minimal zero-overhead utility styling.
-- All image operations will strictly run in-browser using standard canvas and File/Blob APIs; no backend API endpoints.
+- Keep image decoding entirely on the client using native browser APIs (`URL.createObjectURL`, `Image`).
+- Strict error handling with user-friendly messages for invalid formats and oversize images.
+- No backend API routes created.
 
 ## Files Changed
+- `package.json`
+- `tsconfig.json`
+- `tailwind.config.ts`
+- `postcss.config.js`
+- `next.config.ts`
+- `.eslintrc.json`
+- `.gitignore`
+- `app/layout.tsx`
+- `app/globals.css`
+- `app/page.tsx`
+- `components/Header.tsx`
+- `components/ImageDropzone.tsx`
+- `components/ImagePreview.tsx`
+- `lib/image/types.ts`
+- `lib/image/decode.ts`
+- `lib/image/validation.ts`
+- `lib/utils/file.ts`
 - `docs/PROGRESS.md`
 
 ## Resume Instructions
-Continue from: Phase 1 — Application foundation.
+Continue from: Phase 2 — Image engine.
