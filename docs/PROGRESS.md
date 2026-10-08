@@ -1,7 +1,7 @@
 # imzr Development Progress
 
 ## Current Phase
-All phases
+All phases + SEO, Policy, and Author Credits
 
 ## Status
 COMPLETE
@@ -17,9 +17,20 @@ COMPLETE
 - **Phase 7 & 8 — UI refinement & Mobile UX**: Refined the user experience to be a minimal, quiet, professional utility. Desktop sticky preview and mobile responsive layout with sticky export bar and generous touch targets.
 - **Phase 9 — Testing**: Validated image workflows with automated test suite covering math, transforms, file utilities, dimension constraints, crop calculations, and privacy architecture.
 - **Phase 10 — Production cleanup**: Verified zero unused dependencies, zero backend endpoints, passing lint, and successful Next.js production builds. Updated acceptance criteria in `docs/08-acceptance-criteria.md`.
+- **Author Credits & Attribution**:
+  - Implemented `CreditModal.tsx` displaying Dhrubo Roy Partho's credentials (B.Sc. in Information and Communication Engineering, University of Rajshahi), Email (`dhruboroypartho@gmail.com`), and LinkedIn.
+  - Added minimalist credit status footer on the empty-state landing page.
+  - Added "Credit" button in header navigation.
+- **Policy & Security Documentation**:
+  - Created `/policy` (and `/privacy`) detailing the 100% browser-based architecture, zero cloud storage, absence of backend processing, immunity to image misuse/abuse, and memory lifecycle cleanup.
+  - Added "Security & Policy" link in header and footers.
+- **SEO & Discoverability**:
+  - Added dynamic `app/sitemap.ts` (`/sitemap.xml`) indexing all public routes.
+  - Added `app/robots.ts` (`/robots.txt`) linking to the sitemap.
+  - Enhanced `app/layout.tsx` with OpenGraph, Twitter card, canonical tags, and author metadata.
 
 ## Current Work
-- All phases completed and verified.
+- All enhancements complete, tested, and verified.
 
 ## Next Step
 Ready for deployment to Vercel.
@@ -30,6 +41,7 @@ Ready for deployment to Vercel.
 ## Validation
 - npm run lint: PASS
 - npm run build: PASS
+- npm test: PASS (8/8 test suites passing)
 - Core image workflows: PASS
 - Mobile UI: PASS
 - Export: PASS
@@ -52,6 +64,11 @@ Ready for deployment to Vercel.
 - `app/layout.tsx`
 - `app/globals.css`
 - `app/page.tsx`
+- `app/policy/page.tsx`
+- `app/privacy/page.tsx`
+- `app/sitemap.ts`
+- `app/robots.ts`
+- `components/CreditModal.tsx`
 - `components/Header.tsx`
 - `components/ImageDropzone.tsx`
 - `components/ImageEditor.tsx`

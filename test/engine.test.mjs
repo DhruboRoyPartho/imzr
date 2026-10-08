@@ -211,4 +211,9 @@ test("Privacy & Architecture verification", async () => {
   const fs = await import("node:fs");
   const apiDirExists = fs.existsSync("./app/api");
   assert.equal(apiDirExists, false, "Security violation: /app/api must NOT exist");
+
+  // Verify policy and SEO sitemap exist
+  assert.ok(fs.existsSync("./app/policy/page.tsx"), "Policy page must exist");
+  assert.ok(fs.existsSync("./app/sitemap.ts"), "sitemap.ts must exist");
+  assert.ok(fs.existsSync("./app/robots.ts"), "robots.ts must exist");
 });
