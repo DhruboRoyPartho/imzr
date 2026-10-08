@@ -1,28 +1,25 @@
 # imzr Development Progress
 
 ## Current Phase
-Phase 5 — Output and export
+Phase 6 — Compression
 
 ## Status
 COMPLETE
 
 ## Completed
-- Implemented `OutputControls.tsx`:
-  - Format selection between JPEG, PNG, and WebP.
-  - Quality slider (10% to 100%, default 85%) for JPEG and WebP.
-  - Transparent lossless notice for PNG without fake quality controls.
-  - Custom filename input with live extension pill and clean suffix replacement without double extensions (e.g. `photo.png` -> `photo-edited.jpg`).
-- Integrated `ExportBar.tsx` with:
-  - Live original metrics (dimensions, original file size).
-  - Output metrics (dimensions, format, last exported size in KB/MB).
-  - Safe Blob generation and download trigger using `URL.createObjectURL` and `URL.revokeObjectURL`.
-  - Recoverable user-facing error handling on export failures.
+- Implemented quality compression slider for JPEG and WebP formats.
+- Implemented Target Size Mode with:
+  - Numeric input and KB/MB unit selector.
+  - Non-destructive iterative binary search algorithm finding optimal quality in ≤6 iterations without silently altering dimensions.
+  - Accurate feedback messages reporting achieved size and optimal quality.
+  - Clear, honest communication when a target is impossible ("The smallest practical export is larger than your target. Try reducing dimensions.").
+  - Lossless explanation for PNG format without misleading quality controls.
 
 ## Current Work
-- Phase 5 complete. Moving to Phase 6 — Compression.
+- Phase 6 complete. Moving to Phase 7 — UI refinement & Phase 8 — Mobile UX.
 
 ## Next Step
-Phase 6 — Compression (Implement quality-based compression metrics and target file size mode with iterative binary search and clear messaging when target is unreachable without downscaling).
+Phase 7 & 8 — UI refinement and Mobile UX (Refine typography, keyboard accessibility, clear visual hierarchies, responsive layout for desktop/laptop/tablet/mobile, and touch interactions according to `03-ux-ui.md`).
 
 ## Known Issues
 - None.
@@ -30,18 +27,15 @@ Phase 6 — Compression (Implement quality-based compression metrics and target 
 ## Validation
 - npm run lint: PASS (0 errors, 0 warnings)
 - npm run build: PASS (static generation clean)
-- relevant manual tests: JPEG/PNG/WebP formats, filename generation without double extensions, quality slider behavior, and download mechanisms verified.
+- relevant manual tests: Binary search target size compression, feedback messaging, and unit conversions verified.
 
 ## Important Decisions
-- No fake quality slider for PNG.
-- Blob generation performed on-demand during export or size calculation to preserve main-thread responsiveness.
-- Object URLs are safely revoked after downloads complete.
+- No dimension reduction occurs during compression unless the user explicitly resizes.
+- PNG is recognized as strictly lossless.
 
 ## Files Changed
 - `components/OutputControls.tsx`
-- `components/ExportBar.tsx`
-- `components/ImageEditor.tsx`
 - `docs/PROGRESS.md`
 
 ## Resume Instructions
-Continue from: Phase 6 — Compression.
+Continue from: Phase 7 — UI refinement.

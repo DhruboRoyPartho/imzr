@@ -100,7 +100,7 @@ export default function CropControls({
           Crop
         </h2>
         {isCropped && (
-          <span className="text-xs font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+          <span className="text-xs font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
             {editorState.crop.width} × {editorState.crop.height}
           </span>
         )}
@@ -111,7 +111,7 @@ export default function CropControls({
           <button
             type="button"
             onClick={handleStartCrop}
-            className="flex-1 px-3 py-2 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-800 rounded transition-colors cursor-pointer"
+            className="flex-1 px-3.5 py-2.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-800 rounded transition-colors cursor-pointer"
           >
             {isCropped ? "Adjust crop" : "Crop image"}
           </button>
@@ -119,7 +119,7 @@ export default function CropControls({
             <button
               type="button"
               onClick={handleResetCrop}
-              className="px-3 py-2 text-xs font-medium text-slate-600 hover:text-slate-900 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors cursor-pointer"
+              className="px-3.5 py-2.5 text-xs font-medium text-slate-600 hover:text-slate-900 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors cursor-pointer"
             >
               Reset
             </button>
@@ -132,7 +132,7 @@ export default function CropControls({
             <span className="block text-xs font-medium text-slate-600 mb-1.5">
               Aspect ratio
             </span>
-            <div className="grid grid-cols-5 gap-1">
+            <div className="grid grid-cols-5 gap-1.5">
               {ASPECT_RATIO_PRESETS.map((preset) => {
                 const isSelected =
                   editorState.crop.aspectRatio === preset.value;
@@ -141,7 +141,7 @@ export default function CropControls({
                     key={preset.label}
                     type="button"
                     onClick={() => handleSelectPreset(preset.value)}
-                    className={`text-xs py-1.5 rounded text-center font-medium transition-colors cursor-pointer border ${
+                    className={`text-xs py-2 rounded text-center font-medium transition-colors cursor-pointer border ${
                       isSelected
                         ? "bg-slate-900 text-white border-slate-900"
                         : "bg-white text-slate-700 border-slate-300 hover:bg-slate-50"
@@ -159,14 +159,14 @@ export default function CropControls({
             <button
               type="button"
               onClick={handleApplyCrop}
-              className="flex-1 px-3 py-2 text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded shadow-xs transition-colors cursor-pointer"
+              className="flex-1 px-4 py-2.5 text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white rounded shadow-xs transition-colors cursor-pointer"
             >
               Apply crop
             </button>
             <button
               type="button"
               onClick={handleResetCrop}
-              className="px-3 py-2 text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded transition-colors cursor-pointer"
+              className="px-4 py-2.5 text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded transition-colors cursor-pointer"
             >
               Cancel
             </button>

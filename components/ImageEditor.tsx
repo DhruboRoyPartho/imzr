@@ -58,8 +58,8 @@ export default function ImageEditor({
     <div className="flex-1 flex flex-col justify-between">
       {/* Editor Body */}
       <div className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6 items-start">
-        {/* Left: Canvas Preview */}
-        <div className="w-full flex items-center justify-center min-h-[380px] lg:min-h-[520px]">
+        {/* Left: Canvas Preview (sticky on desktop) */}
+        <div className="w-full flex items-center justify-center min-h-[340px] sm:min-h-[420px] lg:min-h-[540px] lg:sticky lg:top-20">
           <ImagePreview
             sourceImage={sourceImage}
             editorState={editorState}

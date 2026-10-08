@@ -38,7 +38,6 @@ export default function ImageDropzone({
     if (file) {
       processFile(file);
     }
-    // reset input so the same file can be selected again if needed
     e.target.value = "";
   };
 
@@ -71,7 +70,7 @@ export default function ImageDropzone({
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        className={`border-2 border-dashed rounded-lg p-10 text-center transition-colors bg-white ${
+        className={`border-2 border-dashed rounded-lg p-8 sm:p-10 text-center transition-colors bg-white ${
           isDragging
             ? "border-slate-800 bg-slate-50"
             : "border-slate-300 hover:border-slate-400"
@@ -90,7 +89,7 @@ export default function ImageDropzone({
         <h1 className="text-xl font-semibold text-slate-900 mb-2">
           Edit an image quickly
         </h1>
-        <p className="text-sm text-slate-600 mb-6 max-w-sm mx-auto">
+        <p className="text-sm text-slate-600 mb-6 max-w-sm mx-auto leading-relaxed">
           Resize, crop, rotate, convert, and compress images directly in your
           browser.
         </p>
@@ -100,7 +99,7 @@ export default function ImageDropzone({
             type="button"
             disabled={isLoading}
             onClick={() => fileInputRef.current?.click()}
-            className="inline-flex items-center justify-center px-5 py-2.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white text-sm font-medium rounded-md shadow-sm transition-colors disabled:opacity-50 cursor-pointer"
+            className="inline-flex items-center justify-center px-6 py-2.5 bg-slate-900 hover:bg-slate-800 active:bg-slate-950 text-white text-sm font-medium rounded-md shadow-xs transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 cursor-pointer"
           >
             {isLoading ? "Opening image..." : "Open image"}
           </button>

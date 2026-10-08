@@ -48,10 +48,10 @@ export default function ExportBar({
   };
 
   return (
-    <footer className="w-full bg-white border-t border-slate-200 py-3 px-4 md:px-6">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className="w-full bg-white border-t border-slate-200 py-3 px-4 md:px-6 sticky bottom-0 z-20 shadow-[0_-2px_10px_rgba(0,0,0,0.03)]">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
         {/* Metadata info */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-600">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1 text-xs text-slate-600 w-full sm:w-auto">
           <div>
             <span className="text-slate-400">Original: </span>
             <span className="font-mono font-medium text-slate-800">
@@ -75,7 +75,7 @@ export default function ExportBar({
             {lastExportSize ? (
               <>
                 <span className="text-slate-400"> · </span>
-                <span className="font-medium text-emerald-700">
+                <span className="font-medium text-emerald-700 font-mono">
                   {formatBytes(lastExportSize)}
                 </span>
               </>
@@ -84,11 +84,11 @@ export default function ExportBar({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+        <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
           <button
             type="button"
             onClick={onReset}
-            className="px-3.5 py-2 text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded transition-colors cursor-pointer"
+            className="px-4 py-2.5 text-xs font-medium text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded transition-colors cursor-pointer"
           >
             Reset
           </button>
@@ -97,7 +97,7 @@ export default function ExportBar({
             type="button"
             disabled={isExporting}
             onClick={handleDownload}
-            className="flex-1 sm:flex-initial px-5 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 active:bg-slate-950 rounded shadow-xs transition-colors disabled:opacity-50 cursor-pointer"
+            className="flex-1 sm:flex-initial px-6 py-2.5 text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 active:bg-slate-950 rounded shadow-xs transition-colors disabled:opacity-50 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900"
           >
             {isExporting ? "Exporting..." : "Download image"}
           </button>

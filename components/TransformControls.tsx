@@ -63,18 +63,18 @@ export default function TransformControls({
         <button
           type="button"
           onClick={() => handleRotate("ccw")}
-          className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-800 rounded transition-colors cursor-pointer"
+          className="flex items-center justify-center gap-2 px-3 py-2.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-800 rounded transition-colors cursor-pointer"
         >
-          <span>↺</span>
+          <span className="text-sm">↺</span>
           <span>Rotate left</span>
         </button>
 
         <button
           type="button"
           onClick={() => handleRotate("cw")}
-          className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-800 rounded transition-colors cursor-pointer"
+          className="flex items-center justify-center gap-2 px-3 py-2.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-800 rounded transition-colors cursor-pointer"
         >
-          <span>↻</span>
+          <span className="text-sm">↻</span>
           <span>Rotate right</span>
         </button>
       </div>
@@ -83,26 +83,26 @@ export default function TransformControls({
         <button
           type="button"
           onClick={handleFlipHorizontal}
-          className={`flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-medium rounded transition-colors cursor-pointer border ${
+          className={`flex items-center justify-center gap-2 px-3 py-2.5 text-xs font-medium rounded transition-colors cursor-pointer border ${
             editorState.flipX
               ? "bg-slate-900 text-white border-slate-900"
               : "bg-white text-slate-700 border-slate-300 hover:bg-slate-50"
           }`}
         >
-          <span>⇄</span>
+          <span className="text-sm">⇄</span>
           <span>Flip horizontal</span>
         </button>
 
         <button
           type="button"
           onClick={handleFlipVertical}
-          className={`flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-medium rounded transition-colors cursor-pointer border ${
+          className={`flex items-center justify-center gap-2 px-3 py-2.5 text-xs font-medium rounded transition-colors cursor-pointer border ${
             editorState.flipY
               ? "bg-slate-900 text-white border-slate-900"
               : "bg-white text-slate-700 border-slate-300 hover:bg-slate-50"
           }`}
         >
-          <span>⇅</span>
+          <span className="text-sm">⇅</span>
           <span>Flip vertical</span>
         </button>
       </div>

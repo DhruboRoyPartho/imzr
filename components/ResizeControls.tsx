@@ -74,7 +74,6 @@ export default function ResizeControls({
       const willKeep = !prev.resize.keepAspectRatio;
       let newHeight = prev.resize.height;
       if (willKeep) {
-        // snap height to preserve ratio based on current width
         newHeight = Math.max(1, Math.round(prev.resize.width / naturalRatio));
       }
       return {
@@ -128,7 +127,7 @@ export default function ResizeControls({
             max={16384}
             value={currentWidth}
             onChange={(e) => handleWidthChange(parseInt(e.target.value, 10))}
-            className="w-full text-sm font-mono px-2.5 py-1.5 border border-slate-300 rounded bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-700"
+            className="w-full text-sm font-mono px-3 py-2 border border-slate-300 rounded bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-700"
           />
         </div>
 
@@ -146,19 +145,19 @@ export default function ResizeControls({
             max={16384}
             value={currentHeight}
             onChange={(e) => handleHeightChange(parseInt(e.target.value, 10))}
-            className="w-full text-sm font-mono px-2.5 py-1.5 border border-slate-300 rounded bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-700"
+            className="w-full text-sm font-mono px-3 py-2 border border-slate-300 rounded bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-700"
           />
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-2 mb-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <button
           type="button"
           onClick={toggleKeepRatio}
-          className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded border transition-colors cursor-pointer ${
+          className={`flex items-center gap-1.5 text-xs font-medium px-3 py-2 rounded border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-700 ${
             keepRatio
               ? "bg-slate-900 text-white border-slate-900"
-              : "bg-white text-slate-600 border-slate-300 hover:bg-slate-50"
+              : "bg-white text-slate-700 border-slate-300 hover:bg-slate-50"
           }`}
         >
           <span>{keepRatio ? "✓ Ratio locked" : "Ratio unlocked"}</span>
@@ -170,7 +169,7 @@ export default function ResizeControls({
               key={pct}
               type="button"
               onClick={() => applyPercentage(pct)}
-              className="text-xs px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded transition-colors font-mono cursor-pointer"
+              className="text-xs px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 text-slate-800 rounded transition-colors font-mono cursor-pointer"
             >
               {pct}%
             </button>
