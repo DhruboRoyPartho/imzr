@@ -3,9 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import ImageDropzone from "@/components/ImageDropzone";
-import ImagePreview from "@/components/ImagePreview";
+import ImageEditor from "@/components/ImageEditor";
 import { SourceImage } from "@/lib/image/types";
-import { formatBytes } from "@/lib/utils/file";
 
 export default function Home() {
   const [sourceImage, setSourceImage] = useState<SourceImage | null>(null);
@@ -64,21 +63,10 @@ export default function Home() {
             />
           </div>
         ) : (
-          <div className="flex-1 flex flex-col max-w-7xl w-full mx-auto p-4 md:p-6 gap-6">
-            <div className="flex items-center justify-between text-xs text-slate-500 pb-2 border-b border-slate-200">
-              <span className="truncate max-w-xs md:max-w-md font-medium text-slate-700">
-                {sourceImage.fileName}
-              </span>
-              <span className="font-mono">
-                Original: {sourceImage.width} × {sourceImage.height} ·{" "}
-                {formatBytes(sourceImage.fileSize)}
-              </span>
-            </div>
-
-            <div className="flex-1 flex items-center justify-center">
-              <ImagePreview sourceImage={sourceImage} />
-            </div>
-          </div>
+          <ImageEditor
+            sourceImage={sourceImage}
+            onError={handleError}
+          />
         )}
       </main>
     </div>

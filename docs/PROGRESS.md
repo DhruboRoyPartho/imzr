@@ -1,59 +1,50 @@
 # imzr Development Progress
 
 ## Current Phase
-Phase 1 — Application foundation
+Phase 2 — Image engine
 
 ## Status
 COMPLETE
 
 ## Completed
-- Next.js 15 + React 19 + TypeScript + Tailwind CSS initialized.
-- Global styling and neutral layout established.
-- imzr branding and header with "Open another" functionality.
-- ImageDropzone with file picker, drag-and-drop, and privacy statement: "Your image stays in your browser. It is not uploaded."
-- Client-side image validation (MIME types, dimension limits, large-image pixel bounds).
-- In-browser image decoding via HTMLImageElement and ObjectURL lifecycle management.
-- Initial image preview and metadata display (dimensions, file size).
-- Clean object URL revocation to prevent memory leaks.
+- Created `lib/image/types.ts` defining `SourceImage`, `CropState`, `ResizeState`, `EditorState`, `OutputFormat`.
+- Created `lib/image/validation.ts` with strict dimension and pixel thresholds (`MAX_SAFE_PIXELS`, `MAX_SAFE_DIMENSION`) and human-friendly error messages.
+- Created `lib/image/decode.ts` with object URL lifecycle management and safe dimension checking.
+- Created `lib/image/transform.ts` with transformation math, natural dimension calculation, and rotation calculations.
+- Created `lib/image/render.ts` implementing the full 2D Canvas pipeline (Crop -> Rotate -> Flip -> Resize), high-quality smoothing, and transparent-to-JPEG white background fill.
+- Created `lib/image/export.ts` with canvas-to-blob encoding for JPEG, PNG, and WebP, clean filename management without double extensions, and automatic object URL revocation.
+- Created `lib/image/compression.ts` with binary-search target file-size compression without downscaling dimensions.
+- Created `lib/utils/math.ts` for aspect ratio calculations and boundary clamping.
 
 ## Current Work
-- Phase 1 completed and verified with clean build and lint. Moving to Phase 2 — Image engine.
+- Phase 2 complete. Moving to Phase 3 — Resize and transformations.
 
 ## Next Step
-Phase 2 — Image engine (Implement browser-only image processing core in `lib/image/`: `transform.ts`, `render.ts`, `export.ts`, `compression.ts`).
+Phase 3 — Resize and transformations (Build ResizeControls, TransformControls, coordinate EditorState in ImageEditor, live canvas preview, aspect-ratio lock/unlock, percentage resizing, rotation left/right, flip horizontal/vertical, and reset).
 
 ## Known Issues
 - None.
 
 ## Validation
 - npm run lint: PASS (0 errors, 0 warnings)
-- npm run build: PASS (static generation successful)
-- relevant manual tests: File decoding and layout components structured and verified.
+- npm run build: PASS (static generation clean)
+- relevant manual tests: Transform pipeline math and canvas bounds verified.
 
 ## Important Decisions
-- Keep image decoding entirely on the client using native browser APIs (`URL.createObjectURL`, `Image`).
-- Strict error handling with user-friendly messages for invalid formats and oversize images.
-- No backend API routes created.
+- Mathematical transform pipeline directly uses Canvas 2D transforms around center origin to avoid intermediate memory copies.
+- Binary search for JPEG/WebP compression runs up to 6 iterations for high accuracy and fast speed.
+- PNG export properly recognized as lossless with no fake quality settings.
 
 ## Files Changed
-- `package.json`
-- `tsconfig.json`
-- `tailwind.config.ts`
-- `postcss.config.js`
-- `next.config.ts`
-- `.eslintrc.json`
-- `.gitignore`
-- `app/layout.tsx`
-- `app/globals.css`
-- `app/page.tsx`
-- `components/Header.tsx`
-- `components/ImageDropzone.tsx`
-- `components/ImagePreview.tsx`
 - `lib/image/types.ts`
-- `lib/image/decode.ts`
 - `lib/image/validation.ts`
-- `lib/utils/file.ts`
+- `lib/image/decode.ts`
+- `lib/image/transform.ts`
+- `lib/image/render.ts`
+- `lib/image/export.ts`
+- `lib/image/compression.ts`
+- `lib/utils/math.ts`
 - `docs/PROGRESS.md`
 
 ## Resume Instructions
-Continue from: Phase 2 — Image engine.
+Continue from: Phase 3 — Resize and transformations.
