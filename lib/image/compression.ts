@@ -1,4 +1,4 @@
-import { EditorState, SourceImage } from "./types";
+import type { EditorState, SourceImage } from "./types";
 import { renderToCanvas } from "./render";
 
 export type CompressionResult = {

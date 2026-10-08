@@ -1,4 +1,4 @@
-import { EditorState, OutputFormat, SourceImage } from "./types";
+import type { EditorState, OutputFormat, SourceImage } from "./types";
 
 /**
  * Returns the default editor state for a new source image.

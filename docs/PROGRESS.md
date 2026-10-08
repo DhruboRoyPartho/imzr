@@ -1,25 +1,25 @@
 # imzr Development Progress
 
 ## Current Phase
-Phase 6 — Compression
+Phase 7 & 8 — UI refinement and Mobile UX
 
 ## Status
 COMPLETE
 
 ## Completed
-- Implemented quality compression slider for JPEG and WebP formats.
-- Implemented Target Size Mode with:
-  - Numeric input and KB/MB unit selector.
-  - Non-destructive iterative binary search algorithm finding optimal quality in ≤6 iterations without silently altering dimensions.
-  - Accurate feedback messages reporting achieved size and optimal quality.
-  - Clear, honest communication when a target is impossible ("The smallest practical export is larger than your target. Try reducing dimensions.").
-  - Lossless explanation for PNG format without misleading quality controls.
+- Refined typography, focus rings, accessibility, and visual hierarchies following `03-ux-ui.md`:
+  - Minimal, professional, quiet interface. No decorative gradients, no emojis, no marketing fluff.
+  - Generous touch targets (min 40px padding/height) for mobile inputs and buttons.
+  - Sticky header with clean branding and "Open another" button.
+  - Sticky preview container on desktop so canvas remains in view while adjusting sidebar controls.
+  - Mobile column stacking (Preview -> Crop -> Resize -> Transform -> Output -> Sticky bottom ExportBar).
+  - Sticky bottom ExportBar for instant thumb reach on mobile devices.
 
 ## Current Work
-- Phase 6 complete. Moving to Phase 7 — UI refinement & Phase 8 — Mobile UX.
+- Phases 7 & 8 complete. Moving to Phase 9 — Testing.
 
 ## Next Step
-Phase 7 & 8 — UI refinement and Mobile UX (Refine typography, keyboard accessibility, clear visual hierarchies, responsive layout for desktop/laptop/tablet/mobile, and touch interactions according to `03-ux-ui.md`).
+Phase 9 — Testing (Systematically execute verification across file handling, resize, crop, rotation/flip, format conversion, quality/compression, export/download, network privacy, and mobile responsiveness).
 
 ## Known Issues
 - None.
@@ -27,15 +27,21 @@ Phase 7 & 8 — UI refinement and Mobile UX (Refine typography, keyboard accessi
 ## Validation
 - npm run lint: PASS (0 errors, 0 warnings)
 - npm run build: PASS (static generation clean)
-- relevant manual tests: Binary search target size compression, feedback messaging, and unit conversions verified.
+- relevant manual tests: Mobile breakpoint layout, sticky bars, and keyboard focus states verified.
 
 ## Important Decisions
-- No dimension reduction occurs during compression unless the user explicitly resizes.
-- PNG is recognized as strictly lossless.
+- Kept UI restrained, functional, and utility-focused without extraneous SaaS marketing tropes.
+- Sticky preview on desktop and sticky export bar on mobile ensure seamless UX.
 
 ## Files Changed
-- `components/OutputControls.tsx`
+- `components/Header.tsx`
+- `components/ImageDropzone.tsx`
+- `components/ResizeControls.tsx`
+- `components/CropControls.tsx`
+- `components/TransformControls.tsx`
+- `components/ExportBar.tsx`
+- `components/ImageEditor.tsx`
 - `docs/PROGRESS.md`
 
 ## Resume Instructions
-Continue from: Phase 7 — UI refinement.
+Continue from: Phase 9 — Testing.

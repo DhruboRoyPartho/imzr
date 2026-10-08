@@ -1,4 +1,4 @@
-import { SourceImage } from "./types";
+import type { SourceImage } from "./types";
 import { validateImageFile, validateImageDimensions } from "./validation";
 
 export async function decodeImageFile(file: File): Promise<SourceImage> {

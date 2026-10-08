@@ -1,5 +1,5 @@
-import { CropState } from "./types";
-import { clamp } from "@/lib/utils/math";
+import type { CropState } from "./types";
+import { clamp } from "../utils/math";
 
 export const MIN_CROP_SIZE = 20;
 
