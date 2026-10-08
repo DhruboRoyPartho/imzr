@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { EditorState, SourceImage } from "@/lib/image/types";
+import { CropState, EditorState, SourceImage } from "@/lib/image/types";
 import { createDefaultEditorState } from "@/lib/image/transform";
 import ImagePreview from "./ImagePreview";
 import ResizeControls from "./ResizeControls";
+import CropControls from "./CropControls";
 import TransformControls from "./TransformControls";
 import ExportBar from "./ExportBar";
 
@@ -20,14 +21,24 @@ export default function ImageEditor({
   const [editorState, setEditorState] = useState<EditorState>(() =>
     createDefaultEditorState(sourceImage)
   );
+  const [isCropActive, setIsCropActive] = useState(false);
 
-  // When source image changes, reinitialize editor state
+  // When source image changes, reinitialize editor state and crop mode
   useEffect(() => {
     setEditorState(createDefaultEditorState(sourceImage));
+    setIsCropActive(false);
   }, [sourceImage]);
 
   const handleReset = () => {
     setEditorState(createDefaultEditorState(sourceImage));
+    setIsCropActive(false);
+  };
+
+  const handleCropChange = (newCrop: CropState) => {
+    setEditorState((prev) => ({
+      ...prev,
+      crop: newCrop,
+    }));
   };
 
   return (
@@ -39,11 +50,21 @@ export default function ImageEditor({
           <ImagePreview
             sourceImage={sourceImage}
             editorState={editorState}
+            isCropActive={isCropActive}
+            onCropChange={handleCropChange}
           />
         </div>
 
         {/* Right: Controls Sidebar */}
         <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-xs flex flex-col gap-5">
+          <CropControls
+            sourceImage={sourceImage}
+            editorState={editorState}
+            isCropActive={isCropActive}
+            setIsCropActive={setIsCropActive}
+            onChange={setEditorState}
+          />
+
           <ResizeControls
             sourceImage={sourceImage}
             editorState={editorState}
