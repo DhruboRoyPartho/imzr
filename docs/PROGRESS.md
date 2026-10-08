@@ -1,30 +1,28 @@
 # imzr Development Progress
 
 ## Current Phase
-Phase 4 — Crop
+Phase 5 — Output and export
 
 ## Status
 COMPLETE
 
 ## Completed
-- Implemented `lib/image/crop.ts` with aspect ratio presets (Free, 1:1, 4:3, 3:2, 16:9), default centered crops, and strict boundary clamping.
-- Implemented `components/CropOverlay.tsx` with:
-  - Dimmed 4-quadrant backdrop outside crop selection.
-  - Interactive rule-of-thirds grid lines.
-  - Draggable crop area with touch and mouse pointer capture (`setPointerCapture`, `touch-action: none`).
-  - 8 resize handles (4 corners + 4 edges) supporting proportional aspect-ratio scaling and free dragging.
-  - Precise mapping between display screen pixels and source image pixels.
-- Implemented `components/CropControls.tsx` with:
-  - Crop activation and cancellation.
-  - Preset aspect-ratio selectors.
-  - Apply crop and Reset crop actions with automatic coupled dimension adjustment.
-- Integrated crop overlay smoothly into `ImagePreview.tsx` and `ImageEditor.tsx`.
+- Implemented `OutputControls.tsx`:
+  - Format selection between JPEG, PNG, and WebP.
+  - Quality slider (10% to 100%, default 85%) for JPEG and WebP.
+  - Transparent lossless notice for PNG without fake quality controls.
+  - Custom filename input with live extension pill and clean suffix replacement without double extensions (e.g. `photo.png` -> `photo-edited.jpg`).
+- Integrated `ExportBar.tsx` with:
+  - Live original metrics (dimensions, original file size).
+  - Output metrics (dimensions, format, last exported size in KB/MB).
+  - Safe Blob generation and download trigger using `URL.createObjectURL` and `URL.revokeObjectURL`.
+  - Recoverable user-facing error handling on export failures.
 
 ## Current Work
-- Phase 4 complete. Moving to Phase 5 — Output and export.
+- Phase 5 complete. Moving to Phase 6 — Compression.
 
 ## Next Step
-Phase 5 — Output and export (Implement `OutputControls.tsx` for JPEG, PNG, WebP format conversion, quality adjustment slider for JPEG and WebP, PNG lossless indicator without fake quality controls, custom output filename input, clean extension replacement without double extensions, and temporary object URL lifecycle management).
+Phase 6 — Compression (Implement quality-based compression metrics and target file size mode with iterative binary search and clear messaging when target is unreachable without downscaling).
 
 ## Known Issues
 - None.
@@ -32,19 +30,18 @@ Phase 5 — Output and export (Implement `OutputControls.tsx` for JPEG, PNG, Web
 ## Validation
 - npm run lint: PASS (0 errors, 0 warnings)
 - npm run build: PASS (static generation clean)
-- relevant manual tests: Crop overlay pointer drag, aspect ratio presets, boundary clamp, and transform integration verified.
+- relevant manual tests: JPEG/PNG/WebP formats, filename generation without double extensions, quality slider behavior, and download mechanisms verified.
 
 ## Important Decisions
-- Stored crop coordinates strictly in source-image coordinate space so downstream rotation, flip, and resize pipeline remains 100% stable and reproducible.
-- Crop overlay uses pointer capture and CSS `touch-action: none` to prevent unintended page scroll gestures during mobile cropping.
+- No fake quality slider for PNG.
+- Blob generation performed on-demand during export or size calculation to preserve main-thread responsiveness.
+- Object URLs are safely revoked after downloads complete.
 
 ## Files Changed
-- `lib/image/crop.ts`
-- `components/CropOverlay.tsx`
-- `components/CropControls.tsx`
-- `components/ImagePreview.tsx`
+- `components/OutputControls.tsx`
+- `components/ExportBar.tsx`
 - `components/ImageEditor.tsx`
 - `docs/PROGRESS.md`
 
 ## Resume Instructions
-Continue from: Phase 5 — Output and export.
+Continue from: Phase 6 — Compression.
