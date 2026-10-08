@@ -7,6 +7,7 @@ import ImagePreview from "./ImagePreview";
 import ResizeControls from "./ResizeControls";
 import CropControls from "./CropControls";
 import TransformControls from "./TransformControls";
+import OutputControls from "./OutputControls";
 import ExportBar from "./ExportBar";
 
 interface ImageEditorProps {
@@ -23,15 +24,27 @@ export default function ImageEditor({
   );
   const [isCropActive, setIsCropActive] = useState(false);
 
-  // When source image changes, reinitialize editor state and crop mode
+  // Extract base filename without extension
+  const getBaseName = (name: string) => {
+    const dot = name.lastIndexOf(".");
+    return dot > 0 ? name.substring(0, dot) : name;
+  };
+
+  const [customFilename, setCustomFilename] = useState(() =>
+    getBaseName(sourceImage.fileName)
+  );
+
+  // When source image changes, reinitialize editor state, crop mode, and filename
   useEffect(() => {
     setEditorState(createDefaultEditorState(sourceImage));
     setIsCropActive(false);
+    setCustomFilename(getBaseName(sourceImage.fileName));
   }, [sourceImage]);
 
   const handleReset = () => {
     setEditorState(createDefaultEditorState(sourceImage));
     setIsCropActive(false);
+    setCustomFilename(getBaseName(sourceImage.fileName));
   };
 
   const handleCropChange = (newCrop: CropState) => {
@@ -75,6 +88,14 @@ export default function ImageEditor({
             editorState={editorState}
             onChange={setEditorState}
           />
+
+          <OutputControls
+            sourceImage={sourceImage}
+            editorState={editorState}
+            customFilename={customFilename}
+            setCustomFilename={setCustomFilename}
+            onChange={setEditorState}
+          />
         </div>
       </div>
 
@@ -82,6 +103,7 @@ export default function ImageEditor({
       <ExportBar
         sourceImage={sourceImage}
         editorState={editorState}
+        customFilename={customFilename}
         onReset={handleReset}
         onError={onError}
       />

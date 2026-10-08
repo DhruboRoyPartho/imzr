@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import { EditorState, SourceImage } from "@/lib/image/types";
-import { formatBytes } from "@/lib/utils/file";
+import { formatBytes, MIME_TO_EXTENSION } from "@/lib/utils/file";
 import { downloadImage } from "@/lib/image/export";
 
 interface ExportBarProps {
   sourceImage: SourceImage;
   editorState: EditorState;
+  customFilename?: string;
   onReset: () => void;
   onError: (msg: string) => void;
 }
@@ -15,6 +16,7 @@ interface ExportBarProps {
 export default function ExportBar({
   sourceImage,
   editorState,
+  customFilename,
   onReset,
   onError,
 }: ExportBarProps) {
@@ -23,11 +25,16 @@ export default function ExportBar({
 
   const outW = editorState.resize.width;
   const outH = editorState.resize.height;
+  const ext = MIME_TO_EXTENSION[editorState.outputFormat] || "jpg";
 
   const handleDownload = async () => {
     setIsExporting(true);
     try {
-      const result = await downloadImage(sourceImage, editorState);
+      const result = await downloadImage(
+        sourceImage,
+        editorState,
+        customFilename
+      );
       setLastExportSize(result.fileSize);
     } catch (err) {
       const message =
@@ -60,6 +67,10 @@ export default function ExportBar({
             <span className="text-slate-400">Output: </span>
             <span className="font-mono font-medium text-slate-800">
               {outW} × {outH}
+            </span>
+            <span className="text-slate-400"> · </span>
+            <span className="uppercase font-semibold text-slate-700">
+              {ext}
             </span>
             {lastExportSize ? (
               <>

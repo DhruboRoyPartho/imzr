@@ -1,31 +1,30 @@
 # imzr Development Progress
 
 ## Current Phase
-Phase 3 — Resize and transformations
+Phase 4 — Crop
 
 ## Status
 COMPLETE
 
 ## Completed
-- Implemented `ResizeControls.tsx` with:
-  - Width and Height pixel numeric inputs with min/max safety limits.
-  - Aspect-ratio lock/unlock toggle with automatic coupled dimension adjustment.
-  - Percentage presets (25%, 50%, 75%, 100%) calculated from original natural dimensions.
-- Implemented `TransformControls.tsx` with:
-  - Rotate counter-clockwise (-90°) and clockwise (+90°).
-  - Proper dimension swapping when rotating (e.g. 1920 × 1080 -> 1080 × 1920).
-  - Horizontal flip and Vertical flip toggles with center origin reflection.
-- Implemented `ImageEditor.tsx` layout:
-  - Desktop split view (responsive preview on left, clean tool controls sidebar on right).
-  - Mobile column stacking (preview top, controls beneath, export bar at bottom).
-- Implemented `ExportBar.tsx` with live original and output dimension and size metrics, reset action, and download action.
-- Live canvas preview in `ImagePreview.tsx` reflecting transformations instantaneously without unnecessary intermediate memory allocation.
+- Implemented `lib/image/crop.ts` with aspect ratio presets (Free, 1:1, 4:3, 3:2, 16:9), default centered crops, and strict boundary clamping.
+- Implemented `components/CropOverlay.tsx` with:
+  - Dimmed 4-quadrant backdrop outside crop selection.
+  - Interactive rule-of-thirds grid lines.
+  - Draggable crop area with touch and mouse pointer capture (`setPointerCapture`, `touch-action: none`).
+  - 8 resize handles (4 corners + 4 edges) supporting proportional aspect-ratio scaling and free dragging.
+  - Precise mapping between display screen pixels and source image pixels.
+- Implemented `components/CropControls.tsx` with:
+  - Crop activation and cancellation.
+  - Preset aspect-ratio selectors.
+  - Apply crop and Reset crop actions with automatic coupled dimension adjustment.
+- Integrated crop overlay smoothly into `ImagePreview.tsx` and `ImageEditor.tsx`.
 
 ## Current Work
-- Phase 3 completed. Moving to Phase 4 — Crop.
+- Phase 4 complete. Moving to Phase 5 — Output and export.
 
 ## Next Step
-Phase 4 — Crop (Build interactive crop system: free crop, aspect ratio presets [1:1, 4:3, 3:2, 16:9], draggable crop area, corner/edge resize handles, pointer capture for mouse and touch, constrained to image boundaries, and integration with transform pipeline).
+Phase 5 — Output and export (Implement `OutputControls.tsx` for JPEG, PNG, WebP format conversion, quality adjustment slider for JPEG and WebP, PNG lossless indicator without fake quality controls, custom output filename input, clean extension replacement without double extensions, and temporary object URL lifecycle management).
 
 ## Known Issues
 - None.
@@ -33,20 +32,19 @@ Phase 4 — Crop (Build interactive crop system: free crop, aspect ratio presets
 ## Validation
 - npm run lint: PASS (0 errors, 0 warnings)
 - npm run build: PASS (static generation clean)
-- relevant manual tests: Transform logic verified, aspect-ratio lock verified, dimension swapping on 90° rotation verified.
+- relevant manual tests: Crop overlay pointer drag, aspect ratio presets, boundary clamp, and transform integration verified.
 
 ## Important Decisions
-- All edits are rendered directly from the source image element on each change to prevent cumulative compression degradation.
-- Dimensions swap properly on 90°/270° rotations.
+- Stored crop coordinates strictly in source-image coordinate space so downstream rotation, flip, and resize pipeline remains 100% stable and reproducible.
+- Crop overlay uses pointer capture and CSS `touch-action: none` to prevent unintended page scroll gestures during mobile cropping.
 
 ## Files Changed
-- `components/ResizeControls.tsx`
-- `components/TransformControls.tsx`
-- `components/ImageEditor.tsx`
-- `components/ExportBar.tsx`
+- `lib/image/crop.ts`
+- `components/CropOverlay.tsx`
+- `components/CropControls.tsx`
 - `components/ImagePreview.tsx`
-- `app/page.tsx`
+- `components/ImageEditor.tsx`
 - `docs/PROGRESS.md`
 
 ## Resume Instructions
-Continue from: Phase 4 — Crop.
+Continue from: Phase 5 — Output and export.
