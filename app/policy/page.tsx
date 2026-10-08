@@ -2,9 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy & Security Policy — imzr",
+  title: "Privacy & Security Policy",
   description:
     "imzr is a 100% browser-based image utility. We do not upload, store, or process your images on any server. Total privacy and zero abuse risk.",
+  alternates: {
+    canonical: "/policy",
+  },
+  openGraph: {
+    title: "Privacy & Security Policy — imzr",
+    description:
+      "100% browser-based image utility. Zero server uploads, zero cloud storage, absolute privacy.",
+    url: "/policy",
+  },
 };
 
 export default function PolicyPage() {
