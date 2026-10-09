@@ -58,18 +58,39 @@ export default function Header({
           </span>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <nav className="flex items-center gap-1 sm:gap-2 text-xs">
+          <Link
+            href="/guides"
+            className="text-slate-600 hover:text-slate-900 px-2 py-1.5 rounded transition-colors hidden sm:inline"
+          >
+            Guides
+          </Link>
+
+          <Link
+            href="/about"
+            className="text-slate-600 hover:text-slate-900 px-2 py-1.5 rounded transition-colors hidden md:inline"
+          >
+            About
+          </Link>
+
+          <Link
+            href="/contact"
+            className="text-slate-600 hover:text-slate-900 px-2 py-1.5 rounded transition-colors hidden md:inline"
+          >
+            Contact
+          </Link>
+
           <Link
             href="/policy"
-            className="text-xs text-slate-600 hover:text-slate-900 px-2 py-1.5 rounded transition-colors"
+            className="text-slate-600 hover:text-slate-900 px-2 py-1.5 rounded transition-colors"
           >
-            Security & Policy
+            Security &amp; Policy
           </Link>
 
           <button
             type="button"
             onClick={onOpenCredit}
-            className="text-xs text-slate-600 hover:text-slate-900 px-2 py-1.5 rounded transition-colors cursor-pointer"
+            className="text-slate-600 hover:text-slate-900 px-2 py-1.5 rounded transition-colors cursor-pointer"
           >
             Credit
           </button>
@@ -93,7 +114,7 @@ export default function Header({
               </button>
             </div>
           )}
-        </div>
+        </nav>
       </div>
     </header>
   );

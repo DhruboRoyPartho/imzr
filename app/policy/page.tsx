@@ -34,12 +34,32 @@ export default function PolicyPage() {
             />
             <span>imzr</span>
           </Link>
-          <Link
-            href="/"
-            className="text-xs font-medium text-slate-700 hover:text-slate-900 px-3.5 py-2 border border-slate-300 hover:border-slate-400 rounded bg-white hover:bg-slate-50 transition-colors"
-          >
-            ← Back to Editor
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/guides"
+              className="text-xs font-medium text-slate-600 hover:text-slate-900 px-2 py-1 rounded transition-colors hidden sm:inline"
+            >
+              Guides
+            </Link>
+            <Link
+              href="/about"
+              className="text-xs font-medium text-slate-600 hover:text-slate-900 px-2 py-1 rounded transition-colors hidden sm:inline"
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="text-xs font-medium text-slate-600 hover:text-slate-900 px-2 py-1 rounded transition-colors hidden sm:inline"
+            >
+              Contact
+            </Link>
+            <Link
+              href="/"
+              className="text-xs font-medium text-slate-700 hover:text-slate-900 px-3.5 py-1.5 border border-slate-300 hover:border-slate-400 rounded bg-white hover:bg-slate-50 transition-colors"
+            >
+              ← Back to Editor
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -190,13 +210,27 @@ export default function PolicyPage() {
         </div>
       </main>
 
-      {/* Minimal Footer */}
+      {/* Footer */}
       <footer className="border-t border-slate-200 py-6 text-center text-xs text-slate-500 bg-white">
         <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <span>imzr — Browser-only image editor</span>
-          <Link href="/" className="text-slate-800 hover:underline font-medium">
-            Open Image Editor
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/" className="text-slate-800 hover:underline font-medium">
+              Image Editor
+            </Link>
+            <Link href="/guides" className="text-slate-800 hover:underline font-medium">
+              Guides
+            </Link>
+            <Link href="/privacy" className="text-slate-800 hover:underline font-medium">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-slate-800 hover:underline font-medium">
+              Terms of Service
+            </Link>
+            <Link href="/about" className="text-slate-800 hover:underline font-medium">
+              About
+            </Link>
+          </div>
         </div>
       </footer>
     </div>
