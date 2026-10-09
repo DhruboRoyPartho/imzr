@@ -22,6 +22,41 @@ export default function Home() {
     };
   }, [sourceImage]);
 
+  // Manage Google AdSense Auto Ads: display on landing page, suppress during active image editing
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    if (sourceImage) {
+      document.body.setAttribute("data-editor-active", "true");
+      document.documentElement.setAttribute("data-editor-active", "true");
+
+      const cleanupAdStyles = () => {
+        if (document.body.style.paddingTop) document.body.style.removeProperty("padding-top");
+        if (document.body.style.paddingBottom) document.body.style.removeProperty("padding-bottom");
+        if (document.documentElement.style.paddingTop) document.documentElement.style.removeProperty("padding-top");
+        if (document.documentElement.style.paddingBottom) document.documentElement.style.removeProperty("padding-bottom");
+      };
+
+      cleanupAdStyles();
+
+      // Guard against AdSense dynamically adding sticky anchor padding to body while editing
+      const observer = new MutationObserver(() => {
+        cleanupAdStyles();
+      });
+
+      observer.observe(document.body, { attributes: true, attributeFilter: ["style", "class"] });
+
+      return () => {
+        observer.disconnect();
+        document.body.removeAttribute("data-editor-active");
+        document.documentElement.removeAttribute("data-editor-active");
+      };
+    } else {
+      document.body.removeAttribute("data-editor-active");
+      document.documentElement.removeAttribute("data-editor-active");
+    }
+  }, [sourceImage]);
+
   const handleImageLoaded = (newImage: SourceImage) => {
     if (sourceImage) {
       URL.revokeObjectURL(sourceImage.sourceUrl);

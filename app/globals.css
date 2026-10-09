@@ -25,3 +25,40 @@ body {
   background-size: 16px 16px;
   background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
 }
+
+/* =========================================================================
+   Google AdSense Auto Ads Display Control
+   Ads display on the landing page; strictly hidden when editing an image
+   ========================================================================= */
+
+html[data-editor-active="true"],
+body[data-editor-active="true"] {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+body[data-editor-active="true"] .google-auto-placed,
+body[data-editor-active="true"] ins.adsbygoogle,
+body[data-editor-active="true"] .adsbygoogle,
+body[data-editor-active="true"] iframe[id*="google_ads"],
+body[data-editor-active="true"] iframe[id*="aswift"],
+body[data-editor-active="true"] div[id*="google-auto-placed"],
+body[data-editor-active="true"] div[class*="google-auto-placed"],
+body[data-editor-active="true"] .adsbygoogle-noablate {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  max-height: 0 !important;
+  max-width: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  z-index: -9999 !important;
+}
+
