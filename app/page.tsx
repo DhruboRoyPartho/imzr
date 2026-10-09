@@ -244,6 +244,123 @@ export default function Home() {
                 </div>
               </section>
 
+              {/* Featured Educational Guides & Knowledge Base */}
+              <section aria-labelledby="guides-heading" className="space-y-6">
+                <div className="text-center space-y-1.5">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    Publisher Knowledge Base
+                  </span>
+                  <h2
+                    id="guides-heading"
+                    className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900"
+                  >
+                    Image Optimization &amp; Privacy Guides
+                  </h2>
+                  <p className="text-sm text-slate-600 max-w-xl mx-auto">
+                    In-depth articles exploring image compression algorithms, aspect ratio standards, and browser security.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  <article className="bg-white border border-slate-200 rounded-lg p-5 shadow-xs flex flex-col justify-between space-y-3">
+                    <div className="space-y-1.5">
+                      <span className="text-[10px] font-semibold uppercase tracking-wide text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                        Optimization
+                      </span>
+                      <h3 className="font-semibold text-slate-900 text-sm">
+                        <Link href="/guides/image-compression-guide" className="hover:text-indigo-600 transition-colors">
+                          The Complete Guide to Image Compression: Lossy vs Lossless
+                        </Link>
+                      </h3>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        Learn how DCT quantization works and how to hit exact file size limits (50 KB, 100 KB, 500 KB) for job portals.
+                      </p>
+                    </div>
+                    <Link
+                      href="/guides/image-compression-guide"
+                      className="text-xs font-medium text-indigo-600 hover:underline pt-1 inline-block"
+                    >
+                      Read Guide →
+                    </Link>
+                  </article>
+
+                  <article className="bg-white border border-slate-200 rounded-lg p-5 shadow-xs flex flex-col justify-between space-y-3">
+                    <div className="space-y-1.5">
+                      <span className="text-[10px] font-semibold uppercase tracking-wide text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                        Formats
+                      </span>
+                      <h3 className="font-semibold text-slate-900 text-sm">
+                        <Link href="/guides/image-formats-compared" className="hover:text-indigo-600 transition-colors">
+                          WebP vs JPEG vs PNG: Which Format Should You Choose?
+                        </Link>
+                      </h3>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        A detailed technical comparison of compression efficiency, transparency support, and web performance.
+                      </p>
+                    </div>
+                    <Link
+                      href="/guides/image-formats-compared"
+                      className="text-xs font-medium text-indigo-600 hover:underline pt-1 inline-block"
+                    >
+                      Read Guide →
+                    </Link>
+                  </article>
+
+                  <article className="bg-white border border-slate-200 rounded-lg p-5 shadow-xs flex flex-col justify-between space-y-3">
+                    <div className="space-y-1.5">
+                      <span className="text-[10px] font-semibold uppercase tracking-wide text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                        Cropping
+                      </span>
+                      <h3 className="font-semibold text-slate-900 text-sm">
+                        <Link href="/guides/aspect-ratios-explained" className="hover:text-indigo-600 transition-colors">
+                          Standard Aspect Ratios Explained: Social Media &amp; Passports
+                        </Link>
+                      </h3>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        Master 1:1, 16:9, 4:3, and 9:16 aspect ratios. Learn official dimensions for avatars and passport photos.
+                      </p>
+                    </div>
+                    <Link
+                      href="/guides/aspect-ratios-explained"
+                      className="text-xs font-medium text-indigo-600 hover:underline pt-1 inline-block"
+                    >
+                      Read Guide →
+                    </Link>
+                  </article>
+
+                  <article className="bg-white border border-slate-200 rounded-lg p-5 shadow-xs flex flex-col justify-between space-y-3">
+                    <div className="space-y-1.5">
+                      <span className="text-[10px] font-semibold uppercase tracking-wide text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                        Security
+                      </span>
+                      <h3 className="font-semibold text-slate-900 text-sm">
+                        <Link href="/guides/client-side-privacy" className="hover:text-indigo-600 transition-colors">
+                          Why In-Browser Image Processing Protects Your Documents
+                        </Link>
+                      </h3>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        Why uploading sensitive IDs to cloud converters is dangerous, and how HTML5 Canvas keeps your files private.
+                      </p>
+                    </div>
+                    <Link
+                      href="/guides/client-side-privacy"
+                      className="text-xs font-medium text-indigo-600 hover:underline pt-1 inline-block"
+                    >
+                      Read Guide →
+                    </Link>
+                  </article>
+                </div>
+
+                <div className="text-center pt-2">
+                  <Link
+                    href="/guides"
+                    className="inline-block px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded transition-colors"
+                  >
+                    View All Knowledge Base Guides →
+                  </Link>
+                </div>
+              </section>
+
               {/* Privacy Guarantee Banner */}
               <section className="bg-slate-900 text-white rounded-xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
                 <div className="space-y-2 text-center md:text-left">
@@ -355,48 +472,157 @@ export default function Home() {
 
             </div>
 
-            {/* Minimalistic Credit Status Footer */}
-            <footer className="w-full py-8 text-center text-xs text-slate-500 border-t border-slate-200 mt-auto bg-white/80">
-              <div className="max-w-xl mx-auto px-4 space-y-1.5">
-                <p className="font-semibold text-slate-700 tracking-tight">
-                  imzr — Browser-Based Quick Image Utility
-                </p>
-                <p className="text-slate-600">
-                  Developed by{" "}
-                  <a
-                    href="https://linkedin.com/in/dhrubo-roy-partho"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-900 font-medium hover:underline"
-                  >
-                    Dhrubo Roy Partho
-                  </a>
-                  {" · "}
-                  <span className="text-slate-500">
-                    B.Sc. in Information and Communication Engineering,
-                    University of Rajshahi
-                  </span>
-                </p>
-                <div className="flex items-center justify-center gap-3 pt-1 text-slate-500 text-[11px]">
-                  <a
-                    href="mailto:dhruboroypartho@gmail.com"
-                    className="hover:text-slate-800 underline"
-                  >
-                    dhruboroypartho@gmail.com
-                  </a>
-                  <span>·</span>
-                  <a
-                    href="https://linkedin.com/in/dhrubo-roy-partho"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-slate-800 underline"
-                  >
-                    LinkedIn Profile
-                  </a>
-                  <span>·</span>
-                  <Link href="/policy" className="hover:text-slate-800 underline">
-                    Privacy & Security Policy
-                  </Link>
+            {/* Comprehensive Publisher & Legal Footer */}
+            <footer className="w-full border-t border-slate-200 mt-auto bg-white/90 text-xs text-slate-600">
+              <div className="max-w-5xl mx-auto px-4 py-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                  {/* Col 1: About */}
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="/favicon.png"
+                        alt="imzr logo"
+                        className="w-4 h-4 object-contain"
+                      />
+                      <span className="font-bold text-slate-900 tracking-tight">imzr</span>
+                    </div>
+                    <p className="text-slate-500 leading-relaxed text-[11px]">
+                      A high-speed, private browser image utility. Resize, crop, convert, and compress photos with 100% client-side computing.
+                    </p>
+                  </div>
+
+                  {/* Col 2: Image Tools */}
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-slate-900 text-xs">Image Tools</h4>
+                    <ul className="space-y-1.5 text-[11px] text-slate-600">
+                      <li>
+                        <Link href="/" className="hover:text-indigo-600 transition-colors">
+                          Image Resizer (Pixels &amp; %)
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/" className="hover:text-indigo-600 transition-colors">
+                          Aspect Ratio Cropper
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/" className="hover:text-indigo-600 transition-colors">
+                          Target File Size Compressor
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/" className="hover:text-indigo-600 transition-colors">
+                          WebP, JPEG &amp; PNG Converter
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Col 3: Knowledge Base Guides */}
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-slate-900 text-xs">Educational Guides</h4>
+                    <ul className="space-y-1.5 text-[11px] text-slate-600">
+                      <li>
+                        <Link href="/guides/image-compression-guide" className="hover:text-indigo-600 transition-colors">
+                          Image Compression Guide
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/guides/image-formats-compared" className="hover:text-indigo-600 transition-colors">
+                          WebP vs JPEG vs PNG
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/guides/aspect-ratios-explained" className="hover:text-indigo-600 transition-colors">
+                          Aspect Ratios Explained
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/guides/client-side-privacy" className="hover:text-indigo-600 transition-colors">
+                          Client-Side Privacy Security
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/guides" className="hover:text-indigo-600 transition-colors font-medium">
+                          Browse All Guides →
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Col 4: Trust & Policies */}
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-slate-900 text-xs">About &amp; Policies</h4>
+                    <ul className="space-y-1.5 text-[11px] text-slate-600">
+                      <li>
+                        <Link href="/about" className="hover:text-indigo-600 transition-colors">
+                          About imzr
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/contact" className="hover:text-indigo-600 transition-colors">
+                          Contact &amp; Support
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/privacy" className="hover:text-indigo-600 transition-colors">
+                          Privacy Policy
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/terms" className="hover:text-indigo-600 transition-colors">
+                          Terms of Service
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/policy" className="hover:text-indigo-600 transition-colors">
+                          Security Architecture
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+                  <p>
+                    Developed by{" "}
+                    <a
+                      href="https://linkedin.com/in/dhrubo-roy-partho"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-900 font-medium hover:underline"
+                    >
+                      Dhrubo Roy Partho
+                    </a>{" "}
+                    · B.Sc. in Information &amp; Communication Engineering, University of Rajshahi
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href="mailto:dhruboroypartho@gmail.com"
+                      className="hover:text-slate-800 underline"
+                    >
+                      Email
+                    </a>
+                    <span>·</span>
+                    <a
+                      href="https://linkedin.com/in/dhrubo-roy-partho"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-slate-800 underline"
+                    >
+                      LinkedIn
+                    </a>
+                    <span>·</span>
+                    <a
+                      href="https://github.com/DhruboRoyPartho/imzr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-slate-800 underline"
+                    >
+                      GitHub
+                    </a>
+                  </div>
                 </div>
               </div>
             </footer>
