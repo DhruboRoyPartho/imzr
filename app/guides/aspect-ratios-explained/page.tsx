@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PartnerAd from "@/components/PartnerAd";
 
 export const metadata: Metadata = {
   title: "Standard Aspect Ratios Explained: Social Media, Avatars & Passports",
@@ -163,6 +164,8 @@ export default function AspectRatiosGuidePage() {
                 </div>
               </div>
             </section>
+
+            <PartnerAd />
 
             {/* Passport Photo Section */}
             <section className="space-y-2">

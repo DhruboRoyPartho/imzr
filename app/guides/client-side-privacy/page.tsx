@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PartnerAd from "@/components/PartnerAd";
 
 export const metadata: Metadata = {
   title: "Why In-Browser Image Processing Protects Your Sensitive Documents",
@@ -137,6 +138,8 @@ export default function ClientSidePrivacyGuidePage() {
                 </div>
               </div>
             </section>
+
+            <PartnerAd />
 
             {/* Section 3 */}
             <section className="space-y-2">

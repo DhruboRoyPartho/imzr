@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PartnerAd from "@/components/PartnerAd";
 
 export const metadata: Metadata = {
   title: "WebP vs JPEG vs PNG: Complete Format Comparison",
@@ -173,6 +174,8 @@ export default function ImageFormatsComparedGuidePage() {
                 </li>
               </ul>
             </section>
+
+            <PartnerAd />
 
             {/* WebP Section */}
             <section className="space-y-2">

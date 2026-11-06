@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PartnerAd from "@/components/PartnerAd";
 
 export const metadata: Metadata = {
   title: "The Complete Guide to Image Compression: Lossy vs Lossless",
@@ -184,6 +185,8 @@ export default function ImageCompressionGuidePage() {
                 </li>
               </ul>
             </section>
+
+            <PartnerAd />
 
             {/* Section 4 */}
             <section className="space-y-2">
