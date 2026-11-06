@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PartnerAd from "@/components/PartnerAd";
 
 export const metadata: Metadata = {
   title: "Contact & Support",
@@ -117,6 +118,8 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
+
+            <PartnerAd />
 
             {/* GitHub Issues & Open Source */}
             <section className="space-y-2">

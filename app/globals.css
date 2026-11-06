@@ -27,8 +27,8 @@ body {
 }
 
 /* =========================================================================
-   Google AdSense Auto Ads Display Control
-   Ads display on the landing page; strictly hidden when editing an image
+   Ad & Partner Script Display Control
+   Ads display only on content pages; strictly hidden and suppressed when editing an image
    ========================================================================= */
 
 html[data-editor-active="true"],
@@ -46,7 +46,14 @@ body[data-editor-active="true"] iframe[id*="google_ads"],
 body[data-editor-active="true"] iframe[id*="aswift"],
 body[data-editor-active="true"] div[id*="google-auto-placed"],
 body[data-editor-active="true"] div[class*="google-auto-placed"],
-body[data-editor-active="true"] .adsbygoogle-noablate {
+body[data-editor-active="true"] .adsbygoogle-noablate,
+body[data-editor-active="true"] .partner-ad-slot,
+body[data-editor-active="true"] iframe[src*="quarrelsomebitter"],
+body[data-editor-active="true"] div[class*="vignette"],
+body[data-editor-active="true"] div[class*="ipp-"],
+body[data-editor-active="true"] div[id*="ipp-"],
+body[data-editor-active="true"] div[class*="monetag"],
+body[data-editor-active="true"] div[id*="monetag"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -61,4 +68,3 @@ body[data-editor-active="true"] .adsbygoogle-noablate {
   left: -9999px !important;
   z-index: -9999 !important;
 }
-

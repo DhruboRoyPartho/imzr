@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PartnerAd from "@/components/PartnerAd";
 
 export const metadata: Metadata = {
   title: "Image Editing & Optimization Guides",
@@ -140,6 +141,8 @@ export default function GuidesIndexPage() {
             </article>
           ))}
         </div>
+
+        <PartnerAd />
       </main>
 
       {/* Footer */}

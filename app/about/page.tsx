@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PartnerAd from "@/components/PartnerAd";
 
 export const metadata: Metadata = {
   title: "About imzr",
@@ -154,6 +155,8 @@ export default function AboutPage() {
                 </div>
               </div>
             </section>
+
+            <PartnerAd />
 
             {/* Developer / Creator Attribution */}
             <section className="space-y-3 pt-4 border-t border-slate-100">

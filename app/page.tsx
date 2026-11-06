@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import ImageDropzone from "@/components/ImageDropzone";
 import ImageEditor from "@/components/ImageEditor";
 import CreditModal from "@/components/CreditModal";
+import PartnerAd from "@/components/PartnerAd";
 import { SourceImage } from "@/lib/image/types";
 
 export default function Home() {
@@ -35,16 +36,22 @@ export default function Home() {
         if (document.body.style.paddingBottom) document.body.style.removeProperty("padding-bottom");
         if (document.documentElement.style.paddingTop) document.documentElement.style.removeProperty("padding-top");
         if (document.documentElement.style.paddingBottom) document.documentElement.style.removeProperty("padding-bottom");
+
+        // Remove any injected third-party ad iframes or floating overlays while editing
+        const adElements = document.querySelectorAll(
+          'iframe[src*="quarrelsomebitter"], div[class*="vignette"], div[class*="ipp-"], div[id*="ipp-"], div[class*="monetag"], div[id*="monetag"]'
+        );
+        adElements.forEach((el) => el.remove());
       };
 
       cleanupAdStyles();
 
-      // Guard against AdSense dynamically adding sticky anchor padding to body while editing
+      // Guard against AdSense or partner scripts dynamically adding sticky elements to body while editing
       const observer = new MutationObserver(() => {
         cleanupAdStyles();
       });
 
-      observer.observe(document.body, { attributes: true, attributeFilter: ["style", "class"] });
+      observer.observe(document.body, { attributes: true, childList: true, attributeFilter: ["style", "class"] });
 
       return () => {
         observer.disconnect();
@@ -243,6 +250,9 @@ export default function Home() {
                   </article>
                 </div>
               </section>
+
+              {/* Partner Advertisement (Non-intrusive content slot, unmounted when editing an image) */}
+              <PartnerAd />
 
               {/* Featured Educational Guides & Knowledge Base */}
               <section aria-labelledby="guides-heading" className="space-y-6">
